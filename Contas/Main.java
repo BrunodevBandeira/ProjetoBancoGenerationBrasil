@@ -13,39 +13,38 @@ public class Main {
 		int niver;
 		char funcao;
 		char saida;
-		double valor, credito;
+		double valor = 0, credito;
 		char opcao, opcao2;
 		// String pegaresposta;
 
-		ContaCorrente pessoa = new ContaCorrente();
 
 		do {
 			System.out.println("[BANCO G-9]\n[SLOGAN]\n");
-			System.out.println(" 1-CONTA POUPANÇA\n " + "2-CONTA CORRENTE\n " + "3-CONTA ESPECIAL\n "
+			System.out.println(" 1-CONTA POUPANï¿½A\n " + "2-CONTA CORRENTE\n " + "3-CONTA ESPECIAL\n "
 					+ "4-CONTA EMPRESA\n " + "5-CONTA ESTUDANTIL\n " + "6-SAIR");
 			question1 = leia.next().toUpperCase().charAt(0);
 
-			// Conta poupança
+			// Conta poupanï¿½a ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 			if (question1 == '1') {
 				while (cont != 'N') {
 
 					ContaPoupanca cp = new ContaPoupanca();
 
-					System.out.println("Digite o número da conta");
+					System.out.println("Digite o numero da conta");
 					int numero = leia.nextInt();
 
-					System.out.println("Digite o número do seu CPF");
+					System.out.println("Digite o numero do seu CPF");
 					String cpf = leia.next();
 
 					if (cp.getNumero() == numero && cp.getCpf().equalsIgnoreCase(cpf)) {
 						System.out.println();
-						System.out.println("__[BANCO G-9]__\n__[O BANCO FEITO PARA VOCÊ]__");
-						System.out.println("\n__[CONTA POUPANÇA]__\n");
-						System.out.println("Nº Conta Corrente: " + cp.getNumero());
+						System.out.println("__[BANCO G-9]__\n__[O BANCO FEITO PARA VOCï¿½]__");
+						System.out.println("\n__[CONTA POUPANï¿½A]__\n");
+						System.out.println("Numero da Conta Corrente: " + cp.getNumero());
 						System.out.println("CPF do titular: " + cp.getCpf());
 
 						System.out.println(
-								"Digite C, para usar a função Credito, Digite D, para usar a função debito");
+								"Digite C, para usar a funÃ§Ã£oo Credito, Digite D, para usar a funÃ§Ã£o debito");
 						question1 = leia.next().toUpperCase().charAt(0);
 
 						if (question1 == 'C') {
@@ -72,7 +71,7 @@ public class Main {
 							System.out.println("Saldo atual: " + (cp.getSaldo() - saque) + "R$ \n");
 						}
 
-						System.out.println("Para promoções informe o dia da criação da conta");
+						System.out.println("Para promoï¿½ï¿½es informe o dia da criaÃ§Ã£o da conta");
 						niver = leia.nextInt();
 						cp.correcao(niver);
 
@@ -86,7 +85,7 @@ public class Main {
 						// saida = leia.next().toUpperCase().charAt(0);
 
 					} else {
-						System.err.println("---> SENHA OU LOGIN INVÁLIDOS <---");
+						System.err.println("---> SENHA OU LOGIN INVï¿½LIDOS <---");
 						System.err.println("---> TENTE NOVAMENTE <---");
 						break;
 					}
@@ -96,13 +95,31 @@ public class Main {
 				break;
 			}
 
-			// conta corrente
+			// conta corrente -----------------------------------------------------------------
 			if (question1 == '2') {
+				ContaCorrente pessoa = new ContaCorrente();
+
 				while (cont != 'N') {
 					System.out.println("[BANCO G-9]\n[SLOGAN]");
 					System.out.println("\nCONTA[CONTA CORRENTE]\n");
 					System.out.println("Saldo atual R$ " + pessoa.getSaldo());
 					System.out.println("MOVIMENTOS-CREDITO " + pessoa.getMovimento());
+					
+					System.out.println("Olï¿½, informe o valor da transaÃ§Ã£o: ");
+					valor = leia.nextDouble();
+					System.out.println("Deseja C-creditar ou D-debitar?");
+					opcao = leia.next().toUpperCase().charAt(0);
+					if (opcao == 'C') {
+						
+						pessoa.credito(valor);
+						
+					} else if (opcao == 'D' ) {
+						
+						pessoa.debito(valor);
+						
+					} 
+					System.out.println("\nSeu saldo atual Ã© de: "+pessoa.getSaldo());
+					
 
 					System.out.println("\nDeseja um talÃ£o? S/N ?");
 					portalao = leia.next().toUpperCase().charAt(0);
@@ -117,14 +134,14 @@ public class Main {
 				}
 			} 
 			
-			// conta estudantil
+			// conta estudantil --------------------------------------------------------------------------------------------
 			if (question1 == '5') {
 				while (cont != 'N') {
 					
 					ContaEstudantil minhaConta = new ContaEstudantil(001, "111222333-44");
 					
 					for(int x=0; x<10; x++) {
-						System.out.println("Olá, informe o valor da transação: ");
+						System.out.println("OlÃ¡, informe o valor da transaÃ§Ã£o: ");
 						valor = leia.nextDouble();
 						System.out.println("Deseja C-creditar ou D-debitar?");
 						opcao = leia.next().toUpperCase().charAt(0);
@@ -137,12 +154,12 @@ public class Main {
 							minhaConta.debito(valor);
 							
 						} 
-						System.out.println("\nSeu saldo atual é de: "+minhaConta.getSaldo());
+						System.out.println("\nSeu saldo atual ï¿½ de: R$"+minhaConta.getSaldo());
 						
 						
-						System.out.printf("Você tem um limite de R$ %.2f, gostaria de utiliza-lo?\n",minhaConta.getLimiteEstudantil());
+						System.out.printf("Vocï¿½ tem um limite de R$ %.2f, gostaria de utiliza-lo?\n",minhaConta.getLimiteEstudantil());
 						System.out.println();
-						System.out.println("Digite S - SIM ou N - NÃO");
+						System.out.println("Digite S - SIM ou N - NÃƒO");
 						opcao2 = leia.next().toUpperCase().charAt(0);
 						
 						
@@ -151,10 +168,10 @@ public class Main {
 							credito = leia.nextDouble();
 							minhaConta.limite(credito);
 							
-							System.out.println("Seu saldo atual é de: "+minhaConta.getSaldo());
+							System.out.println("Seu saldo atual Ã© de: "+minhaConta.getSaldo());
 							
 						} else if (opcao2 == 'N') {
-							System.out.println("Seu saldo atual é de: "+minhaConta.getSaldo());
+							System.out.println("Seu saldo atual Ã© de: "+minhaConta.getSaldo());
 						}
 					}
 
@@ -165,7 +182,7 @@ public class Main {
 
 		} while (mov != 6);
 
-		System.err.println("CAIXA FECHADO!!!\nNão esqueça de tirar o cartão da maquina!");
+		System.err.println("CAIXA FECHADO!!!\nNÃ£o esqueï¿½a de tirar o cartÃ£o da maquina!");
 		leia.close();
 	}
 }

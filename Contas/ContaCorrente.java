@@ -20,13 +20,21 @@ public class ContaCorrente extends Conta {
 
     void setContadorTalao() {
         if (contadorTalao <= 0) {
-            System.out.println("Desculpe você não tem mais talão para ser usado!");
+            System.out.println("Desculpe vocï¿½ nï¿½o tem mais talï¿½o para ser usado!");
         } else {
             this.contadorTalao = this.contadorTalao - 1;
-            System.out.println("Vocêª solicitou um talão.\n Vocêª tem " + contadorTalao + " Talões restantes");
+            System.out.println("Vocï¿½ solicitou um talï¿½o.\n Vocï¿½ tem " + contadorTalao + " Talï¿½es restantes");
         }
     }
 
+    @Override
+	public void debito(double valor) {
+		if (this.saldo>=valor) {
+			this.saldo = this.saldo - valor;
+		} else if (valor>saldo) {
+			System.out.println("VOCï¿½ Nï¿½O TEM SALDO PARA ESSA OPERAï¿½ï¿½O.\n");
+		}
+	}
     // movimentos
     public int getMovimento() {
         return movimento;
@@ -36,7 +44,7 @@ public class ContaCorrente extends Conta {
         this.movimento = movimento - 1;
 
         if (movimento <= 0) {
-            System.out.println("Suas movimentações diarias acabaram! ");
+            System.out.println("Suas movimentaï¿½ï¿½es diarias acabaram! ");
 
         }
     }
