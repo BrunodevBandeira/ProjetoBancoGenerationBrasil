@@ -1,10 +1,10 @@
-package CONTA;
+package Contas;
 
 public abstract class Conta {
 
 	private int numero = 12345;
 	private String cpf = "987987987";
-	private double saldo = 0;
+	protected double saldo = 0; //Miria - mudei para protected pq minha classe precisa usar
 	private boolean ativa;
 
 	public Conta() {
@@ -17,6 +17,13 @@ public abstract class Conta {
 		this.cpf = cpf;
 		this.saldo = saldo;
 		this.ativa = ativa;
+	}
+	
+	//Miria - fiz sobrecarga para usar na minha conta
+	public Conta(int numero, String cpf) {
+		super();
+		this.numero = numero;
+		this.cpf = cpf;
 	}
 
 	public int getNumero() {
@@ -51,11 +58,10 @@ public abstract class Conta {
 		this.saldo = saldo + credito;
 	}
 
-	public void debito(double debito) {
+	/*public void debito(double debito) {
 		this.saldo = saldo + debito;
-	}
+	}*/
 	
-	/*
 	public void debito(double valor) {
 		if (valor >= this.saldo) {
 			this.saldo = this.saldo - valor;
@@ -63,5 +69,4 @@ public abstract class Conta {
 			System.out.println("Você não tem saldo suficiente!");
 		}
 	}
-	*/
 }

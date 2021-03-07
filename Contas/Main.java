@@ -1,4 +1,4 @@
-package CONTA;
+package Contas;
 
 import java.util.Scanner;
 
@@ -13,6 +13,8 @@ public class Main {
 		int niver;
 		char funcao;
 		char saida;
+		double valor, credito;
+		char opcao, opcao2;
 		// String pegaresposta;
 
 		ContaCorrente pessoa = new ContaCorrente();
@@ -113,7 +115,51 @@ public class Main {
 					cont = leia.next().toUpperCase().charAt(0);
 
 				}
-			} else if (question1 == '6') {
+			} 
+			
+			// conta estudantil
+			if (question1 == '5') {
+				while (cont != 'N') {
+					
+					ContaEstudantil minhaConta = new ContaEstudantil(001, "111222333-44");
+					
+					for(int x=0; x<10; x++) {
+						System.out.println("Olá, informe o valor da transação: ");
+						valor = leia.nextDouble();
+						System.out.println("Deseja C-creditar ou D-debitar?");
+						opcao = leia.next().toUpperCase().charAt(0);
+						if (opcao == 'C') {
+							
+							minhaConta.credito(valor);
+							
+						} else if (opcao == 'D' ) {
+							
+							minhaConta.debito(valor);
+							
+						} 
+						System.out.println("\nSeu saldo atual é de: "+minhaConta.getSaldo());
+						
+						
+						System.out.printf("Você tem um limite de R$ %.2f, gostaria de utiliza-lo?\n",minhaConta.getLimiteEstudantil());
+						System.out.println();
+						System.out.println("Digite S - SIM ou N - NÃO");
+						opcao2 = leia.next().toUpperCase().charAt(0);
+						
+						
+						if (opcao2 == 'S') {
+							System.out.println("Informe valor desejado: ");
+							credito = leia.nextDouble();
+							minhaConta.limite(credito);
+							
+							System.out.println("Seu saldo atual é de: "+minhaConta.getSaldo());
+							
+						} else if (opcao2 == 'N') {
+							System.out.println("Seu saldo atual é de: "+minhaConta.getSaldo());
+						}
+					}
+
+				}
+			}else if (question1 == '6') {
 				mov = 2;
 			}
 
