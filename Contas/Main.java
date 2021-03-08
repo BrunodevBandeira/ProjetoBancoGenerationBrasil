@@ -67,7 +67,7 @@ public class Main {
 							System.out.println("Saldo atual: " + cp.getSaldo());
 						}
 
-						System.out.println("Para sacar digite a quantia aqui ou zero para continuar: ");
+						System.out.println("Para sacar digite a quantia desejado ou digite zero para continuar: ");
 						saque = leia.nextInt();
 						if (saque > cp.getSaldo()) {
 							System.err.println("SAQUE NEGADO!");
