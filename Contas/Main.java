@@ -133,6 +133,57 @@ public class Main {
 
 				}
 			} 
+				// ContaEmpresa ---------------------------------------------------------------------------------------------
+			if(question1 =='4') {
+				ContaEmpresa pessoa = new ContaEmpresa();
+
+				while (cont != 'N') {
+					System.out.println("[BANCO G-9]\n[SLOGAN]");
+					System.out.println("\nCONTA[CONTA EMPRESA]\n");
+					System.out.println("Saldo atual R$ " + pessoa.getSaldo());
+					System.out.println(pessoa.getMovimento()+" MOVIMENTOS da CONTA EMPRESA ");
+					
+					System.out.println("Ol�, informe o valor da transação: ");
+					valor = leia.nextDouble();
+					System.out.println("Deseja C-creditar ou D-debitar?");
+					opcao = leia.next().toUpperCase().charAt(0);
+					if (opcao == 'C') {
+						
+						pessoa.credito(valor);
+						pessoa.setMovimento();
+						
+					} else if (opcao == 'D' ) {
+						
+						pessoa.debito(valor);
+						pessoa.setMovimento();
+						
+					} 
+					System.out.println("\nSeu saldo atual é de: "+pessoa.getSaldo());
+					
+					System.out.printf("Voc� tem um limite de R$ %.2f, gostaria de utiliza-lo?\n",pessoa.getEmprestimoEmpresa());
+					System.out.println();
+					System.out.println("Digite S - SIM ou N - NÃO");
+					opcao2 = leia.next().toUpperCase().charAt(0);
+					
+					
+					if (opcao2 == 'S') {
+						System.out.println("Informe valor desejado: ");
+						credito = leia.nextDouble();
+						pessoa.limite(credito);
+						pessoa.setMovimento();
+						
+						System.out.println("Seu saldo atual é de: "+pessoa.getSaldo());
+						
+					} else if (opcao2 == 'N') {
+						System.out.println("Seu saldo atual é de: "+pessoa.getSaldo());
+					}
+					
+					
+					
+					
+				}
+				
+			}
 			
 			// conta estudantil --------------------------------------------------------------------------------------------
 			if (question1 == '5') {
@@ -182,7 +233,7 @@ public class Main {
 
 		} while (mov != 6);
 
-		System.err.println("CAIXA FECHADO!!!\nNão esque�a de tirar o cartão da maquina!");
+		System.err.println("Aplicativo encerrado!");
 		leia.close();
 	}
 }

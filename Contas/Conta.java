@@ -53,20 +53,18 @@ public abstract class Conta {
 	public void setAtiva(boolean ativa) {
 		this.ativa = ativa;
 	}
-
+	// +
 	public void credito(double credito) {
 		this.saldo = saldo + credito;
 	}
 
-	/*public void debito(double debito) {
-		this.saldo = saldo + debito;
-	}*/
 	
+	// -
 	public void debito(double valor) {
 		if (valor >= this.saldo) {
 			this.saldo = this.saldo - valor;
 		} else {
-			System.out.println("Você não tem saldo suficiente!");
+			System.out.println("Vocï¿½ nï¿½o tem saldo suficiente!");
 		}
 	}
 }
