@@ -15,6 +15,7 @@ public class Main {
 		char saida;
 		double valor, credito;
 		char opcao, opcao2;
+		int contador = 0;
 		// String pegaresposta;
 
 		ContaCorrente pessoa = new ContaCorrente();
@@ -26,8 +27,12 @@ public class Main {
 			question1 = leia.next().toUpperCase().charAt(0);
 
 			// Conta poupança--------------------------------------------------------------------------------------------------------
+			
 			if (question1 == '1') {
-				while (cont != 'N') {
+				for (contador = 1; contador < 10; contador++) {
+					System.out.println();
+					System.err.println("Você pode movimentar sua conta 10 vezes " + "\nNúmero de vezes: " + contador);
+
 
 					ContaPoupanca cp = new ContaPoupanca();
 
@@ -82,7 +87,8 @@ public class Main {
 							break;
 						}
 
-					
+						// System.out.println("Continuar depositando S/N ?");
+						// saida = leia.next().toUpperCase().charAt(0);
 
 					} else {
 						System.err.println("---> SENHA OU LOGIN INVÁLIDOS <---");
@@ -90,10 +96,14 @@ public class Main {
 						break;
 					}
 				}
+				System.err.println("Movimentação limite do sistema alcançado.");
+				System.err.println("SISTEMA ENCERRADO.");
 			} else if (question1 == '6') {
-				// mov = 2;
+				mov = 2;
 				break;
 			}
+		
+		
 
 			// conta corrente-----------------------------------------------------------------------------
 			if (question1 == '2') {
