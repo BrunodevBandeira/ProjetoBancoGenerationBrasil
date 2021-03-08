@@ -139,7 +139,71 @@ public class Main {
 					cont = leia.next().toUpperCase().charAt(0);
 
 				}
-			}
+			}		// Conta Especial -----------------------------------------------------------------------------
+					if (question1 == '3') {
+									
+									System.out.println("Digite o número da conta");
+									int numero = leia.nextInt();
+					
+									System.out.println("Digite o número do seu CPF");
+									String cpf = leia.next();
+									
+									boolean ativa = true;
+									double limite = 1000;
+									ContaEspecial ce = new ContaEspecial(limite, numero);
+									
+									while (cont != 'N') {
+											
+										if (ce.getNumero() == numero && ce.getCpf().equalsIgnoreCase(cpf)) {
+											System.out.println();
+											System.out.println("__[BANCO G-9]__\n__[O BANCO FEITO PARA VOCÊ]__");
+											System.out.println("\n__[CONTA ESPECIAL]__\n");
+											System.out.println("Nº CONTA ESPECIAL: " + ce.getNumero());
+											System.out.println("CPF do titular: " + ce.getCpf());
+					
+											System.out.println("Digite C, para usar a função Credito, Digite D, para usar a função debito");
+											question1 = leia.next().toUpperCase().charAt(0);
+					
+											if (question1 == 'C') {
+												System.out.println("--> CREDITO <--");
+												System.out.println("Digite seu deposito aqui: ");
+												deposito = leia.nextDouble();
+												
+												ce.credito(deposito);
+												System.out.println("Saldo atual: " + ce.getSaldo());
+												
+											} else {
+												System.out.println("--> DEBITO <--");
+												System.out.println("Digite seu deposito aqui: ");
+												deposito = leia.nextDouble();
+												
+												ce.debito(deposito);
+												System.out.println("Saldo atual: " + ce.getSaldo());
+												
+											}
+					
+										
+											System.out.println("Para continuar depositando, digite 1. \n Para sair, digite 6.");
+											question1 = leia.next().toUpperCase().charAt(0);
+											
+											if (question1 == '6') {
+												break;
+											}
+					
+									
+										} else {
+											System.err.println("---> SENHA OU LOGIN INVÁLIDOS <---");
+											System.err.println("---> TENTE NOVAMENTE <---");
+											break;
+										}
+									}
+									if (ce.getContador() == 10) {
+										System.out.println("Você atingiu o seu limite de Movimentos");
+									}
+								} else if (question1 == '6') {
+									// mov = 2;
+									break;
+								}
 			
 			// ContaEmpresa ---------------------------------------------------------------------------------------------
 						if(question1 =='4') {
